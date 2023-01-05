@@ -3,6 +3,39 @@
   margin: 0;
 }
 
+.modal {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: rgb(0, 0, 0, 0.5);
+}
+
+.modal > .modal-content {
+  appearance: none;
+  background: white;
+  padding: 2rem;
+}
+
+.modal-content > h2 {
+  margin: 1rem;
+  text-align: center;
+}
+
+.modal-content li {
+  list-style: none;
+}
+
+.book-form label {
+  display: block;
+}
+
+.book-form *:focus-visible {
+  outline: none;
+}
+
 body {
   display: grid;
   grid-template-rows: 1fr 9fr;
@@ -53,6 +86,6 @@ header > .header-title {
   background: orange;
 }
 
-.add-btn {
+.open-modal-btn {
   justify-self: center;
 }

@@ -5,10 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
     <title>Library</title>
   </head>
   <body>
+    <div class="modal">
+      <div class="modal-content">
+        <h2>Add Book</h2>
+        <form action="./" method="post" class="book-form">
+          <ul>
+            <li>
+              <label for="title">Title:</label>
+              <input
+                type="text"
+                class="title-input"
+                name="title"
+                id="title"
+                required
+              />
+            </li>
+            <li>
+              <label for="author">Author:</label>
+              <input
+                type="text"
+                class="author-input"
+                name="author"
+                id="author"
+                required
+              />
+            </li>
+            <li>
+              <label for="desc">Description:</label>
+              <textarea
+                cols="30"
+                rows="10"
+                class="desc-input"
+                name="desc"
+                id="desc"
+                required
+              ></textarea>
+            </li>
+            <li>
+              <label for="num-of-pages">Number of Pages:</label>
+              <input
+                type="number"
+                min="1"
+                max="10000"
+                class="num-of-pages-input"
+                id="num-of-pages"
+                required
+              />
+            </li>
+            <li>
+              <label for="read-status">Read Status</label>
+              <select
+                name="read-status"
+                class="read-status-input"
+                id="read-status"
+                required
+              >
+                <option value="" selected>Select an option</option>
+                <option for="read-status" value="not-yet">Not yet</option>
+                <option for="read-status" value="in-progress">
+                  In progress
+                </option>
+                <option for="read-status" value="finished">Finished</option>
+              </select>
+            </li>
+            <button type="submit" class="btn add-btn">Add book</button>
+          </ul>
+        </form>
+      </div>
+    </div>
     <header><h2 class="header-title">Library</h2></header>
     <div class="main">
       <div class="main-content">
@@ -27,7 +95,7 @@
             </div>
           </div>
         </div>
-        <button class="btn add-btn">+ Add Book</button>
+        <button class="btn open-modal-btn">+ Add Book</button>
       </div>
     </div>
   </body>

@@ -40,8 +40,8 @@ function displayLibrary() {
     desc.textContent = book.desc;
     numOfPages.textContent = book.numOfPages;
     readStatus.textContent = book.readStatus;
-    removeBtn.value = 'Remove';
-    updateBtn.value = 'Update';
+    removeBtn.textContent = 'Remove';
+    updateBtn.textContent = 'Update';
 
     bookContainer.classList.add('book');
     bookInfo.classList.add('book-info');
@@ -67,3 +67,46 @@ function displayLibrary() {
     bookList.appendChild(bookContainer);
   });
 }
+
+document.querySelector('.add-btn').addEventListener('click', (event) => {
+  event.preventDefault();
+  const form = document.querySelector('.book-form');
+  let newBook;
+
+  if (form.checkValidity()) {
+    const modal = document.querySelector('.modal');
+
+    const title = document.querySelector('.title-input');
+    const author = document.querySelector('.author-input');
+    const desc = document.querySelector('.desc-input');
+    const numOfPages = document.querySelector('.num-of-pages-input');
+    const readStatus = document.querySelector('.read-status-input');
+    newBook = new Book(
+      title.value,
+      author.value,
+      desc.value,
+      numOfPages.value,
+      readStatus.value
+    );
+
+    addBookToLibrary(newBook);
+    displayLibrary();
+    modal.style.display = 'none';
+  }
+});
+
+document.querySelector('.open-modal-btn').addEventListener('click', () => {
+  const modal = document.querySelector('.modal');
+  modal.style.display = 'grid';
+});
+
+document.querySelector('.modal').addEventListener(
+  'click',
+  (event) => {
+    const modal = document.querySelector('.modal');
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  },
+  { capture: true }
+);
