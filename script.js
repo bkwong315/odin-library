@@ -5,13 +5,13 @@ class Book {
     title = 'title',
     author = 'author',
     desc = 'desc',
-    pageCount = 'Number of Pages: pageCount',
-    readStatus = 'Read Status: Not yet'
+    numOfPages = 'page count',
+    readStatus = 'Not yet'
   ) {
     this.title = title;
     this.author = author;
     this.desc = desc;
-    this.pageCount = pageCount;
+    this.numOfPages = numOfPages;
     this.readStatus = readStatus;
   }
 }
@@ -35,11 +35,11 @@ function displayLibrary() {
     const removeBtn = document.createElement('button');
     const updateBtn = document.createElement('button');
 
-    title.textContent = book.title;
-    author.textContent = book.author;
-    desc.textContent = book.desc;
-    numOfPages.textContent = book.numOfPages;
-    readStatus.textContent = book.readStatus;
+    title.textContent = `Title: ${book.title}`;
+    author.textContent = `Author: ${book.author}`;
+    desc.textContent = `Description: ${book.desc}`;
+    numOfPages.textContent = `Number of Pages: ${book.numOfPages}`;
+    readStatus.textContent = `Read Status: ${book.readStatus}`;
     removeBtn.textContent = 'Remove';
     updateBtn.textContent = 'Update';
 
@@ -81,12 +81,17 @@ document.querySelector('.add-btn').addEventListener('click', (event) => {
     const desc = document.querySelector('.desc-input');
     const numOfPages = document.querySelector('.num-of-pages-input');
     const readStatus = document.querySelector('.read-status-input');
+
+    const readStatusFormatted =
+      readStatus.value.slice(0, 1).toUpperCase() +
+      readStatus.value.replace('-', ' ').slice(1, readStatus.value.length);
+
     newBook = new Book(
       title.value,
       author.value,
       desc.value,
       numOfPages.value,
-      readStatus.value
+      readStatusFormatted
     );
 
     addBookToLibrary(newBook);
