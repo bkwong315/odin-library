@@ -44,24 +44,26 @@ body {
 
 header {
   display: grid;
-  background: #f00;
+  background: #23231a;
   padding: 1rem;
 }
 
 header > .header-title {
   align-self: flex-end;
+  color: rgb(255, 251, 228);
+  font-size: 2.5rem;
+  text-align: center;
 }
 
 .main {
   display: grid;
   grid-auto-rows: min-content;
-  background: #00f;
+  background: #334c84;
   justify-content: center;
 }
 
 .main-content {
   display: grid;
-  background: gray;
   padding: 2rem;
 }
 
