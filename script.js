@@ -82,16 +82,12 @@ document.querySelector('.add-btn').addEventListener('click', (event) => {
     const numOfPages = document.querySelector('.num-of-pages-input');
     const readStatus = document.querySelector('.read-status-input');
 
-    const readStatusFormatted =
-      readStatus.value.slice(0, 1).toUpperCase() +
-      readStatus.value.replace('-', ' ').slice(1, readStatus.value.length);
-
     newBook = new Book(
       title.value,
       author.value,
       desc.value,
       numOfPages.value,
-      readStatusFormatted
+      readStatus.value
     );
 
     addBookToLibrary(newBook);
