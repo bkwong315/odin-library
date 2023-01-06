@@ -45,7 +45,7 @@ function displayLibrary() {
 
     bookContainer.classList.add('book');
     bookInfo.classList.add('book-info');
-    title.classList.add('book-author');
+    title.classList.add('book-title');
     author.classList.add('book-author');
     desc.classList.add('book-desc');
     numOfPages.classList.add('book-number-of-pages');
@@ -53,6 +53,8 @@ function displayLibrary() {
     bookActions.classList.add('book-actions');
     removeBtn.classList.add('btn', 'remove-btn');
     updateBtn.classList.add('btn', 'update-btn');
+
+    removeBtn.addEventListener('click', removeBook);
 
     bookInfo.appendChild(title);
     bookInfo.appendChild(author);
@@ -63,6 +65,8 @@ function displayLibrary() {
     bookActions.appendChild(removeBtn);
     bookActions.appendChild(updateBtn);
     bookContainer.appendChild(bookActions);
+
+    removeBtn.setAttribute('data-index', myLibrary.length - 1);
 
     bookList.appendChild(bookContainer);
   });
@@ -111,3 +115,13 @@ document.querySelector('.modal').addEventListener(
   },
   { capture: true }
 );
+
+const removeBook = (event) => {
+  const bookTitle =
+    event.target.parentElement.parentElement.querySelector('.book-title');
+
+  myLibrary.splice(
+    myLibrary.find((book) => book.title === bookTitle.value),
+    1
+  );
+};
