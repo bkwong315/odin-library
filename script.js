@@ -4,13 +4,11 @@ class Book {
   constructor(
     title = 'title',
     author = 'author',
-    desc = 'desc',
     numOfPages = 'page count',
     readStatus = 'Not yet'
   ) {
     this.title = title;
     this.author = author;
-    this.desc = desc;
     this.numOfPages = numOfPages;
     this.readStatus = readStatus;
   }
@@ -43,7 +41,7 @@ const createBook = (book) => {
 
   title.textContent = `Title: ${book.title}`;
   author.textContent = `Author: ${book.author}`;
-  numOfPages.textContent = `Number of Pages: ${book.numOfPages}`;
+  numOfPages.textContent = `Pages: ${book.numOfPages}`;
   readStatus.textContent = `Read Status: ${book.readStatus}`;
   removeBtn.textContent = 'Remove';
   updateBtn.textContent = 'Update';
