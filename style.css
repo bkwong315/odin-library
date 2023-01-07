@@ -129,6 +129,10 @@ header > .header-title {
   cursor: pointer;
 }
 
+.update-btn-form {
+  display: none;
+}
+
 .open-modal-btn {
   justify-self: center;
 }

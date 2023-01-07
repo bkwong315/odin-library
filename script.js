@@ -30,6 +30,99 @@ const removeBookFromLibrary = (event) => {
   document.querySelector('.book-list').removeChild(bookContainer);
 };
 
+const updateBook = (event) => {
+  const bookContainer = event.target.parentElement.parentElement;
+  const modal = document.querySelector('.modal');
+  const addBtn = document.querySelector('.add-btn');
+  const updateBtnForm = document.querySelector('.update-btn-form');
+
+  const title = document.querySelector('.title-input');
+  const author = document.querySelector('.author-input');
+  const numOfPages = document.querySelector('.num-of-pages-input');
+  const readStatus = document.querySelector('.read-status-input');
+
+  const [, prevTitle] = bookContainer
+    .querySelector('.book-title')
+    .textContent.split(': ');
+  const [, prevAuthor] = bookContainer
+    .querySelector('.book-author')
+    .textContent.split(': ');
+  const [, prevNumOfPages] = bookContainer
+    .querySelector('.book-number-of-pages')
+    .textContent.split(': ');
+  const [, prevReadStatus] = bookContainer
+    .querySelector('.book-read-status')
+    .textContent.split(': ');
+
+  title.value = prevTitle;
+  author.value = prevAuthor;
+  numOfPages.value = prevNumOfPages;
+  readStatus.value = prevReadStatus;
+
+  const bookEntry = myLibrary.find((book) => book.title === prevTitle);
+
+  addBtn.style.display = 'none';
+  updateBtnForm.style.display = 'block';
+
+  function updateBookDisplay(
+    bookContainer,
+    book,
+    title,
+    author,
+    numOfPages,
+    readStatus,
+    event
+  ) {
+    event.preventDefault();
+
+    book.title = title.value;
+    book.author = author.value;
+    book.numOfPages = numOfPages.value;
+    book.readStatus = readStatus.value;
+
+    const addBtn = document.querySelector('.add-btn');
+    const updateBtnForm = document.querySelector('.update-btn-form');
+    addBtn.style.display = 'block';
+    updateBtnForm.style.display = 'none';
+
+    bookContainer.querySelector(
+      '.book-title'
+    ).textContent = `Title: ${book.title}`;
+    bookContainer.querySelector(
+      '.book-author'
+    ).textContent = `Author: ${book.author}`;
+    bookContainer.querySelector(
+      '.book-number-of-pages'
+    ).textContent = `Pages: ${book.numOfPages}`;
+    bookContainer.querySelector(
+      '.book-read-status'
+    ).textContent = `Read Status: ${book.readStatus}`;
+
+    const modal = document.querySelector('.modal');
+    modal.style.display = 'none';
+    updateBtnForm.removeEventListener('click', updateBookDisplay);
+    const newBtn = updateBtnForm.cloneNode(true);
+    updateBtnForm.parentNode.replaceChild(newBtn, updateBtnForm);
+  }
+
+  document
+    .querySelector('.update-btn-form')
+    .addEventListener(
+      'click',
+      updateBookDisplay.bind(
+        null,
+        bookContainer,
+        bookEntry,
+        title,
+        author,
+        numOfPages,
+        readStatus
+      )
+    );
+
+  modal.style.display = 'grid';
+};
+
 const createBook = (book) => {
   const bookContainer = document.createElement('div');
   const bookInfo = document.createElement('div');
@@ -59,6 +152,7 @@ const createBook = (book) => {
   updateBtn.classList.add('btn', 'update-btn');
 
   removeBtn.addEventListener('click', removeBookFromLibrary);
+  updateBtn.addEventListener('click', updateBook);
 
   bookInfo.appendChild(title);
   bookInfo.appendChild(author);
