@@ -19,13 +19,15 @@ function addBookToLibrary(book) {
 }
 
 const removeBookFromLibrary = (event) => {
-  const bookTitle =
-    event.target.parentElement.parentElement.querySelector('.book-title');
+  const bookContainer = event.target.parentElement.parentElement;
+  const bookTitle = bookContainer.querySelector('.book-title');
 
   myLibrary.splice(
     myLibrary.find((book) => book.title === bookTitle.value),
     1
   );
+
+  document.querySelector('.book-list').removeChild(bookContainer);
 };
 
 const createBook = (book) => {
