@@ -1,6 +1,12 @@
 * {
   padding: 0;
   margin: 0;
+
+  --dark-gray: #23231a;
+  --dark-blue: #334d84;
+  --light-blue: #79a9d1;
+  --dark-red: #c1292e;
+  --light-red: #ff6b6b;
 }
 
 .modal {
@@ -15,8 +21,9 @@
 
 .modal > .modal-content {
   appearance: none;
-  background: white;
+  background: var(--light-blue);
   padding: 2rem;
+  border-radius: 10px;
 }
 
 .modal-content > h2 {
@@ -28,12 +35,30 @@
   list-style: none;
 }
 
+.book-form > ul {
+  display: grid;
+  gap: 1rem;
+}
+
 .book-form label {
   display: block;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.book-form input,
+.book-form select {
+  border: none;
+  padding: 0.5em;
+  background: #fff;
 }
 
 .book-form *:focus-visible {
   outline: none;
+}
+
+.book-form button {
+  justify-self: center;
 }
 
 body {
@@ -44,13 +69,13 @@ body {
 
 header {
   display: grid;
-  background: #23231a;
+  background: var(--dark-gray);
   padding: 1rem;
 }
 
 header > .header-title {
   align-self: flex-end;
-  color: rgb(255, 251, 228);
+  color: #fff;
   font-size: 2.5rem;
   text-align: center;
 }
@@ -58,22 +83,32 @@ header > .header-title {
 .main {
   display: grid;
   grid-auto-rows: min-content;
-  background: #334c84;
+  background: var(--dark-blue);
   justify-content: center;
 }
 
 .main-content {
   display: grid;
+  gap: 2rem;
   padding: 2rem;
 }
 
 .book-list {
   display: grid;
+  gap: 1rem;
 }
 
 .book {
-  background: lightblue;
-  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  background: var(--light-blue);
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px #23231a;
+}
+
+.book .btn {
+  color: #fff;
 }
 
 .btn {
@@ -82,10 +117,16 @@ header > .header-title {
   padding: 0.75em 1.5em;
   width: fit-content;
   height: fit-content;
+  font-weight: 700;
+  color: #fff;
+  background: var(--dark-red);
+  border: none;
+  border-radius: 20px;
 }
 
 .btn:hover {
-  background: orange;
+  background: var(--light-red);
+  cursor: pointer;
 }
 
 .open-modal-btn {
