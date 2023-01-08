@@ -11,7 +11,7 @@
 
 body {
   display: grid;
-  grid-template-rows: minmax(1fr, 10rem) 9fr;
+  grid-template-rows: minmax(auto, 6rem) 9fr;
   min-height: 100vh;
 }
 
